@@ -11,11 +11,16 @@
       <!-- / Introduction --> 
       <!-- ########################################################################################## --> 
       <!-- Services -->
-      <section id="services" class="container">
-        <div class="col-md-12">
-       @foreach($berita as $data)
+      <section id="services" class="last clear">
+        @php
+        $beritas= App\Berita::paginate(6)
+        @endphp
+       @foreach($berita as $data)        
+        <div class="col-md-8">
         <article class="one_third">
-          <figure><img src="{{asset('img/'.$data->cover)}}" style="width: 240px; height: 120px;" alt="">
+          <div class="last box"></div>
+          
+          <figure><img src="{{asset('img/'.$data->cover)}}" width="300" height="180" alt="">
             <figcaption>
               <h2>{{$data->judul}}</h2>
               
@@ -24,11 +29,9 @@
           </figure>
         </article>
         @endforeach
-        </div>
       </section>
+      {!!$berita->links()!!}
+    </div>
       <!-- / Services --> 
     </div>
-    <!-- / content body --> 
-  </div>
-</div>
 @endsection

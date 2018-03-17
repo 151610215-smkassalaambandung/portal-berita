@@ -7,7 +7,7 @@ use App\Berita;
 class PengunjungController extends Controller
 {
     public function index(){
-    	$berita = Berita::all();
+    	$berita = Berita::paginate(4);
     	// dd($berita);
     	return view('index',compact('berita'));
     }
